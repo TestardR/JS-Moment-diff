@@ -1,17 +1,17 @@
 const moment = require('moment')
 
-let date1 = "2064-10-15 00:00:00"
-let date2 = "2020-09-11"
-let end = '30'
+let date1 = "2020-03-01"
 
 date1 = moment(date1).format('YYYY-MM-DD')
-date2 = moment(date2).format('YYYY-MM-DD')
 
+const sysDate = moment(Date.now()).format("YYYY-MM-DD")
+const diff = moment(sysDate).diff(date1, 'days')
+console.log(diff)
+const upBound = 3
+const downBound = 1
 
-const diff = moment(date1).diff(date2, 'days')
-const forcedInt = parseInt(end)
-
-console.log(forcedInt > diff)
-
-
-
+if(diff >= upBound) {
+    console.log('orange')
+} else if (downBound <= diff && diff < upBound) {
+    console.log('red')
+} 
